@@ -1,0 +1,13 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "jsx": "react",
+        "jsxFactory": "createElement",
+        "rootDir": ".",
+        "sourceRoot": ".",
+        "sourceMap": true,
+        "importHelpers": true,
+        "declaration": true,
+        "declarationDir": "types"
+    }
+}

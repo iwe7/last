@@ -1,0 +1,11 @@
+@import "./variable";
+html,
+body {
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: $light;
+    color: $dark;
+}

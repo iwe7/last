@@ -4,11 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel watch ./src/index.html",
+    "serve": "cd dist/ && lite-server ."
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "autoprefixer": "^9.1.5",
+    "babel-preset-env": "^1.7.0",
+    "node-sass": "^4.9.3",
+    "postcss-modules": "^1.4.1",
+    "sass": "^1.14.1",
     "typescript": "^3.1.1"
+  },
+  "dependencies": {
+    "localforage": "^1.7.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "tslib": "^1.9.3"
   }
 }
