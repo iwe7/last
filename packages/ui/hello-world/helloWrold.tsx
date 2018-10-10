@@ -12,22 +12,16 @@ import { Left } from "../left/left";
 import { Right } from "../right/right";
 import { Center } from "../center/center";
 import { PreviewContainer } from "../preview/previewContainer";
-import { HotKeys } from "react-hotkeys";
-import {
-  SketchPicker
-} from "react-color";
 
 export function HelloWorld() {
   return (
     <div className={styles.helloWorld}>
       <Toolbar />
-      <HotKeys />
       <Center>
         <Left />
         <Quick />
         <Center>
           <PreviewContainer>
-            <SketchPicker />
             <HRuler />
             <VRuler />
             <Preview />
