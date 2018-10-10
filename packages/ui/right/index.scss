@@ -4,4 +4,33 @@
     width: 280px;
     top: 37px;
     background-color: #303030;
+    display: flex;
+    flex-direction: column;
+
+    &_header,
+    &_footer {
+        height: 30px;
+        background-color: #303030;
+        border-bottom: 1px solid #151515;
+    }
+
+    &_footer {
+        border-top: 1px solid #151515;
+    }
+
+    &_container {
+        display: flex;
+        flex: 1;
+    }
+
+    &_toolbar {
+        width: 35px;
+        background-color: #232323;
+    }
+
+    &_content {
+        background: #232323;
+        border-right: 1px solid #151515;
+        flex: 1;
+    }
 }

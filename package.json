@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^16.4.16",
+    "@types/react-color": "^2.13.6",
     "@types/react-dom": "^16.0.9",
     "autoprefixer": "^9.1.5",
     "babel-preset-env": "^1.7.0",
@@ -26,7 +27,9 @@
   "dependencies": {
     "@tensorflow/tfjs": "^0.13.1",
     "react": "^16.5.2",
+    "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
+    "react-hotkeys": "^1.1.4",
     "rxjs": "^6.3.3",
     "three": "^0.97.0"
   }

@@ -1,7 +1,6 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
-import { px2vw } from "../const";
-
+import svg from "./menu.svg";
 export class Quick extends Component {
   static defaultProps: any = {
     className: styles.quick,
@@ -13,9 +12,15 @@ export class Quick extends Component {
     }
   };
   render() {
+    const style = {
+      backgroundImage: `url(${svg})`
+    };
     return (
       <div {...this.props}>
-        <div className={styles.header}>quick header</div>
+        <div className={styles.header}>
+          quick header
+          <button style={style} />
+        </div>
       </div>
     );
   }
