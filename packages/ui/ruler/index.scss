@@ -43,14 +43,14 @@
     background-image: url("./_vruler.jpeg");
     background-repeat: repeat-y;
 
+    li {
+        width: 100%;
+        height: 100px;
+    }
+
     .v_ruler {
         cursor: col-resize;
 
-
-        li {
-            width: 100%;
-            height: 100px;
-        }
 
         span {
             font-size: 10px;
