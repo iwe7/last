@@ -1,4 +1,36 @@
+@import "../../../themes/variable.scss";
+
 .helloWorld {
     text-align: center;
-    margin: 30px;
+    height: 100vh;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: auto;
+}
+
+.helloWorldContent {
+    user-select: none;
+
+    h2 {
+        font-size: 30px;
+        color: $gainsboro;
+    }
+
+    p {
+        font-size: 22px;
+        color: $silver;
+        border: 1px solid #ccc;
+        padding: 10px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block;
+
+        &:hover {
+            background-color: $silver;
+            color: $lightBlack;
+        }
+    }
 }

@@ -1,0 +1,9 @@
+@import "../../../themes/pc.scss";
+.right {
+    width: $rightWidth;
+    position: absolute;
+    top: $topHeight;
+    right: 0px;
+    bottom: 0px;
+    background: #303030;
+}

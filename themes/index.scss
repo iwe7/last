@@ -1,4 +1,9 @@
 @import "./variable";
+
+html {
+    font-size: $fontSize;
+}
+
 html,
 body {
     display: block;
@@ -6,6 +11,18 @@ body {
     margin: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: $light;
-    color: $dark;
+    background-color: #151515;
+    color: $black;
+    overflow: hidden;
+
+    #app {
+        overflow: auto;
+        display: flex;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+    line-height: 1;
 }

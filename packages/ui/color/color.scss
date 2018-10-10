@@ -1,0 +1,52 @@
+@import "../../../themes/variable";
+
+.block {
+    position: relative;
+    width: px2vw(140);
+    margin: px2vw(5);
+    height: px2vw(140);
+    border: 10px solid #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.5s cubic-bezier(0, 0.99, 0, 0.99);
+
+    &:hover {
+        border: 10px solid currentColor;
+    }
+
+    .blockDescription {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 10px;
+        text-align: center;
+        margin: -10px 0 -10px -10px;
+        width: calc(100% + 0px);
+        background-color: #fff;
+        color: #02142B;
+        font-size: 0.7em;
+        // text-transform: uppercase;
+        font-weight: bold;
+        line-height: 1.2em;
+        color: #33517d;
+        transition: border-radius 0.5s cubic-bezier(0, 0.99, 0, 0.99);
+
+        text-overflow: ellipsis;
+        word-break: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.galleryContainer {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-around;
+    background-color: #f1f5fc;
+    overflow: auto;
+
+
+}

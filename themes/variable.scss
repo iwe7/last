@@ -1,2 +1,22 @@
-$light: rgb(223, 219, 206);
-$dark:rgb(50, 50, 50);
+$white: White;
+$whiteSmoke: WhiteSmoke;
+$gainsboro: Gainsboro;
+$lightGrey: LightGrey;
+$silver: Silver;
+$darkGray: DarkGray;
+$gray: Gray;
+$dimGray: DimGray;
+$lightBlack: #333333;
+$black: Black;
+
+$pc: 1920;
+$mobile: 750;
+
+$fontSize: (75/16)vw;
+$five: (75*25)/16;
+
+$vw: 1vw/7.5;
+
+@function px2vw($px) {
+    @return $px * $vw;
+}

@@ -1,0 +1,11 @@
+@import "../../../themes/pc.scss";
+
+.toolbar {
+    height: $topHeight;
+    background: #353535;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    border-bottom: px2vw(1) solid #151515;
+}
