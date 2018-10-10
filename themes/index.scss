@@ -11,7 +11,7 @@ body {
     margin: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: #151515;
+    background-color: #efefef;
     color: $black;
     overflow: hidden;
 
@@ -25,4 +25,11 @@ body {
 * {
     box-sizing: border-box;
     line-height: 1;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

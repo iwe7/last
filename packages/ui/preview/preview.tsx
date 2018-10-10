@@ -1,6 +1,10 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
-export class Preview extends Component {
+import { px2vw } from "../const";
+export class Preview extends Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
   render() {
     return <div className={styles.preview} />;
   }

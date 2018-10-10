@@ -1,4 +1,4 @@
-export function rgb(color: string) {
+export function rgb(color: string): number[] {
   return [
     parseInt("0x" + color.substring(1, 3)),
     parseInt("0x" + color.substring(3, 5)),

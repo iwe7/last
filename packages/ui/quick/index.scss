@@ -1,22 +1,16 @@
 @import "../../../themes/pc.scss";
 
 .quick {
-    width: $quickWidth;
-    top: $topHeight;
-    position: absolute;
-    left: $leftWidth;
-    background-color: #232323;
     z-index: 1;
-
     .header {
         background-color: #353535;
         color: #b5b5b5;
-        font-size: px2vw(12);
+        font-size: $fsize;
         font-weight: 400;
         margin: 0;
-        padding: px2vw(4) px2vw(12);
-        height: px2vw(30);
-        min-height: px2vw(30);
-        line-height: px2vw(22);
+        padding: $tabPadding $fsize;
+        height: $tabHeight;
+        min-height: $tabHeight;
+        line-height: $tabLineHeight;
     }
 }

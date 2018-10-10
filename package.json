@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel watch ./src/index.html",
-    "serve": "cd dist/ && lite-server ."
+    "serve": "cd dist/ && lite-server .",
+    "tsc": "tsc -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",

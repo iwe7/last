@@ -1,7 +1,12 @@
+@import "../../../themes/pc.scss";
+
 .preview {
-    overflow: visible;
-    position: relative;
     width: 640px;
     height: 1040px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
+}
+
+.previewContainer {
+    overflow: visible;
+    position: relative;
 }

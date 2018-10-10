@@ -6,8 +6,15 @@ $vw: 1vw/12.8;
     @return $px * $vw;
 }
 
-$designWidth: px2vw($mobile);
-$topHeight: px2vw(37);
-$leftWidth: px2vw(65);
-$quickWidth: px2vw(260);
-$rightWidth: px2vw(280);
+$designWidth: 58.59375vw;
+$designHeight: 81.25vw;
+
+$topHeight: 2.890625vw;
+$leftWidth: 5.078125vw;
+$quickWidth: 20.3125vw;
+$rightWidth: 21.875vw;
+$tabHeight: 2.34375vw;
+$tabLineHeight: 1.71875vw;
+$tabPadding: 0.3125vw;
+$fsize: 0.9375vw;
+$px: 0.078125vw;

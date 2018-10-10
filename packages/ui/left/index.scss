@@ -1,11 +1,6 @@
-@import "../../../themes/pc.scss";
-
 .left {
-    width: $leftWidth;
-    position: absolute;
-    top: $topHeight;
-    left: 0px;
-    bottom: 0px;
-    background-color: #353535;
+    width: 65px;
+    top: 37px;
     border-right: 1px solid #151515;
+    background-color: #353535;
 }
