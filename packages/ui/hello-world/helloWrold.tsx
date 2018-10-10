@@ -14,19 +14,7 @@ import { Center } from "../center/center";
 import { PreviewContainer } from "../preview/previewContainer";
 import { HotKeys } from "react-hotkeys";
 import {
-  SketchPicker,
-  SwatchesPicker,
-  PhotoshopPicker,
-  ChromePicker,
-  AlphaPicker,
-  BlockPicker,
-  CirclePicker,
-  CompactPicker,
-  GithubPicker,
-  HuePicker,
-  MaterialPicker,
-  SliderPicker,
-  TwitterPicker
+  SketchPicker
 } from "react-color";
 
 export function HelloWorld() {
@@ -34,25 +22,12 @@ export function HelloWorld() {
     <div className={styles.helloWorld}>
       <Toolbar />
       <HotKeys />
-
       <Center>
         <Left />
         <Quick />
         <Center>
           <PreviewContainer>
-            <AlphaPicker />
-            <MaterialPicker />
-            <SliderPicker />
-            <CompactPicker />
-            <CirclePicker />
-            <HuePicker />
-            <BlockPicker />
-            <GithubPicker />
             <SketchPicker />
-            <SwatchesPicker />
-            <PhotoshopPicker />
-            <TwitterPicker />
-            <ChromePicker />
             <HRuler />
             <VRuler />
             <Preview />
