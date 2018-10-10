@@ -9,6 +9,7 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "noErrorTruncation": true,
         "importHelpers": true,
         "noEmitOnError": true,
         "target": "esnext",
