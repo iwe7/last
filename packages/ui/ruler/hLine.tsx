@@ -53,8 +53,7 @@ export class HLine extends Component<any, IRulerState> {
     return (
       <div draggable={false}>
         {hLines.map((vline, index) => {
-          const top = vline + this.top;
-          return <HLineItem key={index} top={top} index={index} />;
+          return <HLineItem key={index} top={vline} index={index} />;
         })}
       </div>
     );

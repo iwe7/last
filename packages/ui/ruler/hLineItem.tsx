@@ -2,15 +2,68 @@ import { Component, createElement } from "react";
 export interface IHLineItem {
   top: number;
   index: number;
+  base?: number;
 }
 import styles from "./index.scss";
 import { fromEvent, Subscription } from "rxjs";
-import { switchMap, takeUntil, map, tap } from "rxjs/operators";
+import {
+  switchMap,
+  takeUntil,
+  map,
+  tap,
+  skip,
+  take,
+  pluck,
+  filter
+} from "rxjs/operators";
+import previewState from "../preview/state";
 import state from "./state";
-export class HLineItem extends Component<IHLineItem, any> {
+export class HLineItem extends Component<IHLineItem, IHLineItem> {
   subscription: Subscription[] = [];
   constructor(props: any) {
     super(props);
+    this.state = {
+      ...props,
+      base: 14
+    };
+    previewState
+      .pipe(
+        take(1),
+        map(res => res.top)
+      )
+      .subscribe(res => {
+        this.state = {
+          ...this.state,
+          base: res
+        };
+      });
+    this.subscription.push(
+      state
+        .pipe(
+          skip(1),
+          pluck("hLines"),
+          map(res => {
+            return res[this.props.index];
+          }),
+          filter(res => res !== this.state.top)
+        )
+        .subscribe(res => {
+          this.setState({ top: res });
+        })
+    );
+    this.subscription.push(
+      previewState
+        .pipe(
+          skip(1),
+          map(res => res.top),
+          tap(res => {
+            this.setState({
+              base: res
+            });
+          })
+        )
+        .subscribe()
+    );
   }
   componentDidMount() {
     const ele: HTMLElement = this.refs.item as any;
@@ -19,7 +72,7 @@ export class HLineItem extends Component<IHLineItem, any> {
     const mousedown = fromEvent(ele, "mousedown").pipe(
       map((res: any) => res.pageY),
       tap(() => {
-        oldTop = tmpTop || this.props.top;
+        oldTop = tmpTop > 0 ? tmpTop : this.props.top;
         state.dispatch("setCurrentIndex", this.props.index);
       })
     );
@@ -53,7 +106,7 @@ export class HLineItem extends Component<IHLineItem, any> {
   }
   render() {
     const style = {
-      top: `${this.props.top}px`
+      top: `${this.state.top + this.state.base}px`
     };
     return (
       <div
