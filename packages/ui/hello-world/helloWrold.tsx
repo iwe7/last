@@ -13,6 +13,7 @@ import { PreviewContainer } from "../preview/previewContainer";
 import { HLine } from "../ruler/hLine";
 import { VLine } from "../ruler/vLine";
 import { ToolTip } from "../tooltip/tooltip";
+import { Footer } from '../footer/footer';
 
 export function HelloWorld() {
   const style = {
@@ -36,6 +37,7 @@ export function HelloWorld() {
         </Center>
         <Right />
       </Center>
+      <Footer />
     </div>
   );
 }
