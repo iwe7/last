@@ -1,0 +1,34 @@
+.button {
+    width: 28px;
+    padding-left: 0;
+    -webkit-appearance: none;
+    display: block;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    overflow: visible;
+    font: inherit;
+
+    &:hover {
+        background-color: #353535;
+
+        img {
+            opacity: 1;
+        }
+    }
+
+    img {
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin: 5px;
+        opacity: .6;
+    }
+}

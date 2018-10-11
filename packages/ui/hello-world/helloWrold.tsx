@@ -12,8 +12,14 @@ import { Left } from "../left/left";
 import { Right } from "../right/right";
 import { Center } from "../center/center";
 import { PreviewContainer } from "../preview/previewContainer";
+import { DrawCircle } from "../svgs/drawCircle";
+import { SvgIconButton } from '../button/svgIconButton';
 
 export function HelloWorld() {
+  const style = {
+    stroke: `rgb(99,99,99)`,
+    strokeWidth: 2
+  };
   return (
     <div className={styles.helloWorld}>
       <Toolbar />
@@ -24,7 +30,11 @@ export function HelloWorld() {
           <PreviewContainer>
             <HRuler />
             <VRuler />
-            <Preview />
+            <Preview>
+              <svg>
+                <line x1="0" y1="0" x2="300" y2="300" style={style} />
+              </svg>
+            </Preview>
           </PreviewContainer>
         </Center>
         <Right />

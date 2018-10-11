@@ -25,6 +25,7 @@ body {
 * {
     box-sizing: border-box;
     line-height: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 ul,
@@ -32,4 +33,81 @@ ol {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+img {
+    border-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+details,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    -webkit-appearance: button;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+button,
+input {
+    overflow: visible;
 }

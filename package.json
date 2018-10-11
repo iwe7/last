@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^0.13.1",
+    "@types/classnames": "^2.2.6",
+    "classnames": "^2.2.6",
     "rc-bmap": "^0.2.4",
     "react": "^16.5.2",
     "react-color": "^2.14.1",
