@@ -1,13 +1,18 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
 import state from "./state";
-import { fromEvent, animationFrameScheduler } from "rxjs";
+import { fromEvent, animationFrameScheduler, Subscription } from "rxjs";
 import { switchMap, takeUntil, observeOn, map, tap } from "rxjs/operators";
 export class HRuler extends Component {
+  subscription: Subscription[] = [];
   componentDidMount() {
     const ruler: HTMLElement = this.refs.ruler as any;
     const mousedown = fromEvent(ruler, "mousedown").pipe(
-      map((res: any) => res.pageY),
+      map((res: MouseEvent) => {
+        res.stopPropagation();
+        res.preventDefault();
+        return res.pageY;
+      }),
       tap(() => {
         state.dispatch("AddHLine", 0);
       })
@@ -18,19 +23,25 @@ export class HRuler extends Component {
       })
     );
     const mousemove = fromEvent(document.body, "mousemove");
-    mousedown
-      .pipe(
-        switchMap((start: any) =>
-          mousemove.pipe(
-            takeUntil(mouseup),
-            map((move: any) => move.pageY - start)
-          )
-        ),
-        observeOn(animationFrameScheduler)
-      )
-      .subscribe(res => {
-        state.dispatch("UpdateHLine", res);
-      });
+    this.subscription.push(
+      mousedown
+        .pipe(
+          switchMap((start: any) =>
+            mousemove.pipe(
+              takeUntil(mouseup),
+              map((move: any) => move.pageY - start)
+            )
+          ),
+          observeOn(animationFrameScheduler)
+        )
+        .subscribe(res => {
+          state.dispatch("UpdateHLine", res);
+        })
+    );
+  }
+  componentWillUnmount() {
+    this.subscription.map(res => res.unsubscribe());
+    this.subscription = [];
   }
   render() {
     return (

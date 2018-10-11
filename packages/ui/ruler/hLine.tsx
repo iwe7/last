@@ -29,9 +29,6 @@ export class HLine extends Component<any, IRulerState> {
       )
       .subscribe(res => {
         this.top = res;
-        this.setState({
-          top: this.top
-        });
       });
     const preview = previewState
       .pipe(
