@@ -5,7 +5,7 @@ export interface IHLineItem {
   base?: number;
 }
 import styles from "./index.scss";
-import { fromEvent, Subscription } from "rxjs";
+import { fromEvent, Subscription, merge, animationFrameScheduler } from "rxjs";
 import {
   switchMap,
   takeUntil,
@@ -14,7 +14,8 @@ import {
   skip,
   take,
   pluck,
-  filter
+  filter,
+  observeOn
 } from "rxjs/operators";
 import previewState from "../preview/state";
 import state from "./state";
@@ -69,7 +70,9 @@ export class HLineItem extends Component<IHLineItem, IHLineItem> {
     const ele: HTMLElement = this.refs.item as any;
     let oldTop: number = 0;
     let tmpTop: number = 0;
-    const mousedown = fromEvent(ele, "mousedown").pipe(
+    const mousedown = fromEvent(ele, "mousedown");
+
+    const start = merge(mousedown).pipe(
       map((res: any) => res.pageY),
       tap(() => {
         oldTop = tmpTop > 0 ? tmpTop : this.props.top;
@@ -86,12 +89,13 @@ export class HLineItem extends Component<IHLineItem, IHLineItem> {
       })
     );
     this.subscription.push(
-      mousedown
+      start
         .pipe(
           switchMap(start =>
-            mousemove.pipe(
+            merge(mousemove).pipe(
               map(move => move - start),
-              takeUntil(mouseup)
+              takeUntil(mouseup),
+              observeOn(animationFrameScheduler)
             )
           )
         )
