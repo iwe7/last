@@ -1,9 +1,10 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
 import state, { IRulerState } from "./state";
-import { take, skip, map, tap } from "rxjs/operators";
+import { take, skip, map, tap, switchMap, takeUntil } from "rxjs/operators";
 import previewState from "../preview/state";
-import { Subscription, merge } from "rxjs";
+import { Subscription, merge, fromEvent } from "rxjs";
+import { HLineItem } from "./hLineItem";
 export class HLine extends Component<any, IRulerState> {
   top: number = 14;
   subscription: Subscription[] = [];
@@ -50,18 +51,29 @@ export class HLine extends Component<any, IRulerState> {
   render() {
     const { hLines } = this.state;
     return (
-      <div>{hLines.map((vline, index) => this.renderLine(vline, index))}</div>
+      <div draggable={false}>
+        {hLines.map((vline, index) => {
+          const top = vline + this.top;
+          return <HLineItem key={index} top={top} index={index} />;
+        })}
+      </div>
     );
   }
 
-  renderLine(vline: number, index: number) {
-    const style = {
-      top: `${vline + this.top}px`
-    };
-    return (
-      <div key={index} className={styles.h_line} style={style}>
-        <div />
-      </div>
-    );
+  _click(index: any, e?: HTMLElement) {
+    const mousedown = fromEvent(e, "mousedown");
+    const mousemove = fromEvent(document.body, "mousemove");
+    const mouseup = fromEvent(document.body, "mouseup");
+
+    mousedown
+      .pipe(
+        switchMap(down => {
+          console.log("down");
+          return mousemove.pipe(takeUntil(mouseup));
+        })
+      )
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 }

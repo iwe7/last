@@ -47,7 +47,7 @@ export class PreviewContainer extends Component<any, IRulerState> {
     };
 
     return (
-      <div className={styles.previewWraper}>
+      <div draggable={false} className={styles.previewWraper}>
         <VLine />
         <div ref="previewContainer" {...this.props} style={style}>
           {this.props.children}

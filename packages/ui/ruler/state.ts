@@ -20,6 +20,8 @@ export const rulerHandler = (type: string, value: any, old: IRulerState) => {
     case "UpdateHLine":
       lines[old.lineIndex] = value;
       return { ...old, hLines: lines };
+    case "setCurrentIndex":
+      return { ...old, lineIndex: value };
     case "CheckHLine":
       lines = lines.filter((val, index) => {
         if (val > 0) {

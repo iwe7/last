@@ -45,7 +45,7 @@ export class HRuler extends Component {
   }
   render() {
     return (
-      <div ref="ruler" className={styles.h_ruler_wraper}>
+      <div ref="ruler" draggable={false} className={styles.h_ruler_wraper}>
         <ul className={styles.h_ruler}>
           <li>0</li>
           <li>100</li>
