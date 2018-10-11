@@ -3,6 +3,7 @@ import styles from "./index.scss";
 import state from "./state";
 import { fromEvent, animationFrameScheduler, Subscription } from "rxjs";
 import { switchMap, takeUntil, observeOn, map, tap } from "rxjs/operators";
+import * as tooltip from "../tooltip/state";
 export class HRuler extends Component {
   subscription: Subscription[] = [];
   componentDidMount() {
@@ -19,6 +20,7 @@ export class HRuler extends Component {
     );
     const mouseup = fromEvent(document.body, "mouseup").pipe(
       tap(() => {
+        tooltip.hide();
         state.dispatch("CheckHLine");
       })
     );
@@ -29,6 +31,12 @@ export class HRuler extends Component {
           switchMap((start: any) =>
             mousemove.pipe(
               takeUntil(mouseup),
+              tap((res: any) =>
+                tooltip.update({
+                  left: res.pageX,
+                  top: res.pageY
+                })
+              ),
               map((move: any) => move.pageY - start)
             )
           ),
@@ -36,6 +44,9 @@ export class HRuler extends Component {
         )
         .subscribe(res => {
           state.dispatch("UpdateHLine", res);
+          tooltip.update({
+            tip: `${res}`
+          });
         })
     );
   }

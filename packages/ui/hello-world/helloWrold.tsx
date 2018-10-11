@@ -12,6 +12,7 @@ import { Center } from "../center/center";
 import { PreviewContainer } from "../preview/previewContainer";
 import { HLine } from "../ruler/hLine";
 import { VLine } from "../ruler/vLine";
+import { ToolTip } from "../tooltip/tooltip";
 
 export function HelloWorld() {
   const style = {
@@ -24,6 +25,7 @@ export function HelloWorld() {
       <Center>
         <Left />
         <Quick />
+        <ToolTip tip={"tip"} />
         <Center relative={true}>
           <HLine />
           <PreviewContainer>

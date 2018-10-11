@@ -6,6 +6,7 @@ export interface IHLineItem {
 }
 import styles from "./index.scss";
 import { fromEvent, Subscription, merge, animationFrameScheduler } from "rxjs";
+import * as tooltip from "../tooltip/state";
 import {
   switchMap,
   takeUntil,
@@ -80,12 +81,20 @@ export class HLineItem extends Component<IHLineItem, IHLineItem> {
       })
     );
     const mousemove = fromEvent(document.body, "mousemove").pipe(
+      tap((res: any) => {
+        const pos = {
+          left: res.pageX,
+          top: res.pageY
+        };
+        tooltip.update(pos);
+      }),
       map((res: any) => res.pageY)
     );
     const mouseup = fromEvent(document.body, "mouseup").pipe(
       tap(() => {
         oldTop = tmpTop;
         state.dispatch("CheckHLine");
+        tooltip.hide();
       })
     );
     this.subscription.push(
@@ -101,6 +110,9 @@ export class HLineItem extends Component<IHLineItem, IHLineItem> {
         )
         .subscribe(res => {
           tmpTop = oldTop + res;
+          tooltip.update({
+            tip: `${tmpTop}`
+          });
           state.dispatch("UpdateHLine", tmpTop);
         })
     );
