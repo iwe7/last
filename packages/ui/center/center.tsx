@@ -1,10 +1,14 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
-export class Center extends Component {
+import classnames from "classnames";
+export class Center extends Component<any, any> {
   static defaultProps: any = {
-    className: styles.center
+    className: styles.center,
+    relative: false
   };
   render() {
-    return <div {...this.props} />;
+    let { className, relative, ...props } = this.props;
+    if (relative) className = classnames(styles.center, styles.relative);
+    return <div className={className} {...props} />;
   }
 }

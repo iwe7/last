@@ -1,12 +1,19 @@
 @import "../../../themes/pc.scss";
 
 .preview {
-    width: 640px;
-    height: 1040px;
     background-color: #fff;
+    height: 1040px;
+    width: 640px;
 }
 
 .previewContainer {
+    overflow: visible;
+    position: relative;
+}
+
+.previewWraper {
+    width: 640px;
+    height: 100vh;
     overflow: visible;
     position: relative;
 }

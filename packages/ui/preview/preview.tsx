@@ -20,7 +20,6 @@ export class Preview extends Component<any, any> {
       this.setState({
         points: [...this.state.points, point]
       });
-      console.log(this.state.points);
     });
   }
   render() {
