@@ -31,7 +31,7 @@ export class ToolTip extends Component<IToolTipState, IToolTipState> {
     const { tip, left, top, show, ...props } = this.state;
     const style = {
       display: show ? "inline-block" : "none",
-      left: `${left + 10}px`,
+      left: `${left + 15}px`,
       top: `${top - 14}px`
     };
     return (
