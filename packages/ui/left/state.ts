@@ -1,4 +1,4 @@
-import { appStore } from "../../store/action";
+import { appStore } from "../../store";
 import styles from "./index.scss";
 import classnames from "classnames";
 export interface ILeftState {

@@ -1,28 +1,20 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
 import { fromEvent, merge, animationFrameScheduler, Subscription } from "rxjs";
-import {
-  takeUntil,
-  switchMap,
-  observeOn,
-  map,
-  take,
-  skip
-} from "rxjs/operators";
+import { observeOn, map, take, skip } from "rxjs/operators";
 import { VLine } from "../ruler/vLine";
-import { HLine } from "../ruler/hLine";
 
-import state, { IRulerState } from "./state";
-export class PreviewContainer extends Component<any, IRulerState> {
+import * as preview from "./state";
+export class PreviewContainer extends Component<any, preview.IPreviewState> {
   static defaultProps: any = {
     className: styles.previewContainer
   };
   subscription: Subscription[] = [];
   constructor(props: any) {
     super(props);
-    state.pipe(take(1)).subscribe(res => (this.state = res));
+    preview.state.pipe(take(1)).subscribe(res => (this.state = res));
     this.subscription.push(
-      state.pipe(skip(1)).subscribe(res => this.setState(res))
+      preview.state.pipe(skip(1)).subscribe(res => this.setState(res))
     );
   }
   componentDidMount() {
@@ -33,7 +25,7 @@ export class PreviewContainer extends Component<any, IRulerState> {
     this.subscription.push(
       merge(wheel)
         .pipe(observeOn(animationFrameScheduler))
-        .subscribe(res => state.dispatch("wheel", res))
+        .subscribe(res => preview.wheel(res))
     );
   }
   componentWillUnmount() {

@@ -1,8 +1,19 @@
-import { BehaviorSubject } from "rxjs";
-import { scan } from "rxjs/operators";
+import { BehaviorSubject, animationFrameScheduler } from "rxjs";
+import { take, skip, observeOn } from "rxjs/operators";
 export interface IStoreHandler<T = any> {
   (type: string, payload: T, current: T): T;
 }
+
+export interface IKeyValue {
+  [key: string]: any;
+}
+
+export abstract class IStoreAction<T = any> implements IKeyValue {
+  __handler(type: string, payload: T, current: T) {
+    return this[type](payload, current);
+  }
+}
+
 export const defaultHandler: IStoreHandler = (
   type: string,
   payload: any,
@@ -12,10 +23,10 @@ export const defaultHandler: IStoreHandler = (
 export class ActionSubject<T = any> extends BehaviorSubject<T> {
   public children: ActionSubject[] = [];
   public parent: ActionSubject;
-  public store: IStoreHandler<T>;
+  public store: IStoreHandler<T> | IStoreAction<T>;
   constructor(
     public name: string,
-    store: IStoreHandler<T> = defaultHandler,
+    store: IStoreHandler<T> | IStoreAction<T> = defaultHandler,
     defaultVal: T = {} as T,
     parent?: ActionSubject
   ) {
@@ -23,11 +34,15 @@ export class ActionSubject<T = any> extends BehaviorSubject<T> {
     this.parent = parent;
     this.store = store;
   }
-
   dispatch(action: string, value?: T) {
     if (this.store) {
-      const store = this.store(action, value, this.value);
-      this.next(store);
+      if (this.store instanceof IStoreAction) {
+        const _value = this.store.__handler(action, value, this.value);
+        this.next(_value);
+      } else {
+        const store = this.store(action, value, this.value);
+        this.next(store);
+      }
     } else {
       console.log(`no action ${action}`);
     }
@@ -41,7 +56,7 @@ export class ActionSubject<T = any> extends BehaviorSubject<T> {
    */
   of<T = any>(
     name: string,
-    store: IStoreHandler<T> = defaultHandler,
+    store: IStoreHandler<T> | IStoreAction<T> = defaultHandler,
     defaultVal: T = {} as T
   ): ActionSubject {
     const child = new ActionSubject(name, store, defaultVal, this);
@@ -62,9 +77,32 @@ export class ActionSubject<T = any> extends BehaviorSubject<T> {
       });
       if (!select) {
         select = this.selectChildren(selector);
+      } else {
+        select = this.selectParent(selector);
       }
     }
     return select;
+  }
+
+  take(num: number = 1) {
+    return this.pipe(take(num));
+  }
+
+  skip(num: number = 1) {
+    return this.pipe(
+      skip(num),
+      observeOn(animationFrameScheduler)
+    );
+  }
+
+  protected selectParent(selector: string): ActionSubject {
+    if (this.parent) {
+      if (this.parent.name === selector) {
+        return this.parent;
+      } else {
+        return this.parent.selectParent(selector);
+      }
+    }
   }
 
   private selectChildren(selector: string) {
@@ -78,3 +116,4 @@ export class ActionSubject<T = any> extends BehaviorSubject<T> {
   }
 }
 export const appStore = new ActionSubject("__main__");
+export default appStore;

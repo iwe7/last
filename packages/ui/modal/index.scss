@@ -1,0 +1,134 @@
+.modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .6);
+    }
+
+    &_container {
+        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .3);
+        position: relative;
+        z-index: 1;
+        min-width: 300px;
+        background: #454545;
+    }
+
+    &_header {
+        width: 100%;
+        height: 30px;
+        background: #545454;
+        font-size: 14px;
+        color: #fff;
+        border-bottom: 1px solid #333;
+
+        button {
+            color: #000;
+        }
+    }
+
+    &_content {
+        width: 100%;
+        padding: 0;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &_slider {
+        width: 65px;
+        min-height: 180px;
+    }
+
+    &_footer {
+        width: 100%;
+        height: 44px;
+        background: #545454;
+        border-top: 1px solid #333;
+    }
+}
+
+.forms {
+    display: block;
+    flex: 1;
+
+    &_row {
+        display: flex;
+        height: 30px;
+        position: relative;
+        align-items: center;
+
+        &_left {
+            text-align: right;
+            vertical-align: middle;
+            display: inline-block;
+
+            &:before,
+            &:after {
+                content: " ";
+                display: table;
+            }
+
+            span {
+                overflow: hidden;
+                white-space: nowrap;
+                display: block;
+                width: 65px;
+                color: #a0a0a0;
+                text-overflow: inherit;
+                position: relative;
+                font-size: 12px;
+                line-height: 22px;
+
+                &:after {
+                    content: ":";
+                    margin: 0 8px 0 2px;
+                    position: relative;
+                    top: -.5px;
+                    margin: 0 5px 0 2px;
+                }
+            }
+        }
+
+        &_right {
+            flex: 1;
+            padding: 0 5px;
+
+            input {
+                height: 22px;
+                padding-right: 20px;
+                line-height: 22px;
+
+                background-color: #353535;
+                border-radius: 2px;
+                color: #a0a0a0;
+                font-size: 12px;
+
+                margin-top: -1px;
+                vertical-align: top;
+
+                width: 100%;
+                text-align: left;
+                outline: 0;
+                transition: all .3s linear;
+                border: 0;
+                padding: 0 7px;
+            }
+        }
+    }
+}

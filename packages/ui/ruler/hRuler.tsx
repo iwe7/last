@@ -20,8 +20,8 @@ export class HRuler extends Component {
     );
     const mouseup = fromEvent(document.body, "mouseup").pipe(
       tap(() => {
-        tooltip.hide();
         state.dispatch("CheckHLine");
+        tooltip.hide();
       })
     );
     const mousemove = fromEvent(document.body, "mousemove");

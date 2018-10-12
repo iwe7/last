@@ -1,4 +1,4 @@
-import { appStore } from "../../store/action";
+import { appStore } from "../../store";
 export interface IRulerState {
   hLines: number[];
   vLines: number[];

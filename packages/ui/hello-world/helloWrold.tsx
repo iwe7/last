@@ -13,7 +13,8 @@ import { PreviewContainer } from "../preview/previewContainer";
 import { HLine } from "../ruler/hLine";
 import { VLine } from "../ruler/vLine";
 import { ToolTip } from "../tooltip/tooltip";
-import { Footer } from '../footer/footer';
+import { Footer } from "../footer/footer";
+import { Modal } from "../modal";
 
 export function HelloWorld() {
   const style = {
