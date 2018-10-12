@@ -1,5 +1,5 @@
 # 技术栈
 
-tools: `ramda`,`rxjs`,`three`
-framework: `react`,`react-dom`,`react-router`
-ai: `@tensorflow/tfjs`
+1. tools: `ramda`,`rxjs`,`three`
+2. framework: `react`,`react-dom`,`react-router`
+3. ai: `@tensorflow/tfjs`
