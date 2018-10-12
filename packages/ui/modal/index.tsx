@@ -1,11 +1,19 @@
 import { Component, createElement } from "react";
 import styles from "./index.scss";
-import "./state";
-
-export class Modal extends Component {
+import * as state from "./state";
+import classnames from "classnames";
+export class Modal extends Component<state.IModalState, state.IModalState> {
+  constructor(props: any) {
+    super(props);
+    state.set(props);
+    state.state.take().subscribe(res => (this.state = res));
+    state.state.skip().subscribe(res => this.setState(res));
+  }
   render() {
+    const { shown } = this.state;
+    const className = classnames(styles.modal, shown ? styles.modal_shown : "");
     return (
-      <div className={styles.modal}>
+      <div className={className}>
         <div className={styles.modal_layer} />
         <div className={styles.modal_container}>
           <div className={styles.modal_header}>

@@ -39,6 +39,7 @@ export function HelloWorld() {
         <Right />
       </Center>
       <Footer />
+      <Modal />
     </div>
   );
 }
