@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/classnames": "^2.2.6",
+    "@types/ramda": "^0.25.39",
     "@types/react": "^16.4.16",
     "@types/react-color": "^2.13.6",
     "@types/react-dom": "^16.0.9",
+    "@types/react-router-dom": "^4.3.1",
     "autoprefixer": "^9.1.5",
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.4",
@@ -26,13 +29,14 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "^0.13.1",
-    "@types/classnames": "^2.2.6",
     "classnames": "^2.2.6",
+    "ramda": "^0.25.0",
     "rc-bmap": "^0.2.4",
     "react": "^16.5.2",
     "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
     "react-hotkeys": "^1.1.4",
+    "react-router-dom": "^4.3.1",
     "rxjs": "^6.3.3",
     "three": "^0.97.0"
   }

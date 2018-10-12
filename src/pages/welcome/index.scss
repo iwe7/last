@@ -1,0 +1,27 @@
+.container {
+    min-height: 300px;
+    width: 980px;
+    margin: 0 auto;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.list {
+
+    margin: 5px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    li {
+        height: 15vw;
+        width: 15vw;
+        min-width: 15vw;
+        background-color: #fff;
+        cursor: pointer;
+        margin: 5px;
+    }
+}

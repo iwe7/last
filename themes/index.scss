@@ -13,7 +13,6 @@ body {
     height: 100vh;
     background-color: #efefef;
     color: $black;
-    overflow: hidden;
 
     #app {
         overflow: auto;
@@ -110,4 +109,12 @@ select {
 button,
 input {
     overflow: visible;
+}
+
+
+.app {
+    >div {
+        width: 100vw;
+        height: 100vh;
+    }
 }

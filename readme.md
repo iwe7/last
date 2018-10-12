@@ -1,3 +1,5 @@
-## 万能项目
+# 技术栈
 
-## 第一个目标可视化编辑
+tools: `ramda`,`rxjs`,`three`
+framework: `react`,`react-dom`,`react-router`
+ai: `@tensorflow/tfjs`
