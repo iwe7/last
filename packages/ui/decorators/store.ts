@@ -12,12 +12,12 @@ export interface IStoreAction {
 
 export function Store(store: IStoreAction) {
   return (WrappedComponent: any) => {
-    return class IHoc extends WrappedComponent {
+    class IHoc extends WrappedComponent {
       static displayName = `HOC(${getDisplayName(WrappedComponent)})`;
       end: Subject<void> = new Subject();
       constructor(props: any) {
         super(props);
-        store.action.next(props);
+        store.action.dispatch("", props);
         store.action.take().subscribe(res => (this.state = res));
         let sub = store.action.skip().pipe(takeUntil(this.end));
         if (store.key) {
@@ -27,18 +27,16 @@ export function Store(store: IStoreAction) {
           );
         }
         sub.subscribe(res => this.setState(res));
-      }
-      componentDidMount() {
-        super.componentDidMount();
+        console.log(this);
       }
       componentWillUnmount() {
         this.end.next();
-        super.componentWillUnmount();
       }
       render() {
         return super.render();
       }
-    };
+    }
+    return IHoc as any;
   };
 }
 export default Store;

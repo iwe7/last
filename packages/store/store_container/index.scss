@@ -1,0 +1,47 @@
+.store {
+    display: flex;
+    flex-direction: column;
+    background: #ccc;
+
+    &_container {
+        display: flex;
+        flex-direction: row;
+
+        .store_col {
+            border-right: 1px solid #000;
+            margin-right: 5px;
+            .store_item {
+                display: block;
+                padding: 0 10px;
+                line-height: 30px;
+                font-size: 14px;
+                opacity: .8;
+                color: #fff;
+                background: #333;
+                cursor: pointer;
+
+                &:hover,
+                &.active {
+                    opacity: 1;
+                    background: #fff;
+                    color: #333;
+                }
+            }
+        }
+
+        &.center {
+            flex: 1;
+        }
+    }
+
+    &_footer {
+        height: 40px;
+        border-top: 1px solid #000;
+    }
+
+
+    &_header {
+        height: 36px;
+        border-bottom: 1px solid #000;
+    }
+}
