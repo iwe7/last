@@ -10,6 +10,5 @@ store.of(
   },
   {}
 );
-
-store.select('name')
+store.select("name");
 ```

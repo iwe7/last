@@ -91,7 +91,8 @@ export class ActionSubject<T = any> extends BehaviorSubject<T> {
   skip(num: number = 1) {
     return this.pipe(
       skip(num),
-      observeOn(animationFrameScheduler)
+      observeOn(animationFrameScheduler),
+      distinctUntilChanged()
     );
   }
 
