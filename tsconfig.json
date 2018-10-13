@@ -12,6 +12,7 @@
         "noErrorTruncation": true,
         "importHelpers": true,
         "noEmitOnError": true,
+        "suppressImplicitAnyIndexErrors": true,
         "target": "esnext",
         "jsx": "react",
         "jsxFactory": "createElement",
@@ -19,9 +20,11 @@
             "node_modules/@types"
         ],
         "lib": [
+            "es5",
             "es2017",
             "dom",
-            "esnext"
+            "esnext",
+            "es2015.promise"
         ]
     },
     "exclude": [
@@ -31,7 +34,8 @@
         "blogs"
     ],
     "include": [
-        "packages",
-        "src"
+        "tools",
+        "src",
+        "packages"
     ]
 }
